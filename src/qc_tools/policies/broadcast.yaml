@@ -1,0 +1,63 @@
+name: broadcast
+media_type: broadcast
+description: "Strict broadcast compliance QC"
+rules:
+  - metric: brng
+    operator: gt
+    value: 0.0
+    severity: error
+    description: "Broadcast range violation — any pixel outside legal range is unacceptable"
+
+  - metric: satmax
+    operator: gt
+    value: 88.7
+    severity: error
+    description: "Saturation exceeds 75% colour bar broadcast-safe level"
+
+  - metric: y_max
+    operator: gt
+    value: 235
+    severity: error
+    description: "Luma exceeds reference white (100 IRE)"
+
+  - metric: y_min
+    operator: lt
+    value: 16
+    severity: error
+    description: "Luma below reference black (7.5 IRE)"
+
+  - metric: tout
+    operator: gt
+    value: 0.005
+    severity: warning
+    description: "Temporal outliers detected — review for broadcast acceptability"
+
+  - metric: vrep
+    operator: gt
+    value: 0.0
+    severity: warning
+    description: "Vertical line repetitions — review for broadcast acceptability"
+
+  - metric: u_max
+    operator: gt
+    value: 240
+    severity: error
+    description: "Chroma U above broadcast maximum"
+
+  - metric: u_min
+    operator: lt
+    value: 16
+    severity: error
+    description: "Chroma U below broadcast minimum"
+
+  - metric: v_max
+    operator: gt
+    value: 240
+    severity: error
+    description: "Chroma V above broadcast maximum"
+
+  - metric: v_min
+    operator: lt
+    value: 16
+    severity: error
+    description: "Chroma V below broadcast minimum"

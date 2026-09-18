@@ -1,0 +1,57 @@
+name: audio
+media_type: audio
+description: "QC thresholds for audio-only files"
+rules:
+  - metric: peak
+    operator: gt
+    value: -1.0
+    severity: warning
+    description: "Audio peak approaching 0 dBFS — risk of clipping"
+
+  - metric: peak
+    operator: gt
+    value: 0.0
+    severity: error
+    description: "Audio clipping detected — samples above 0 dBFS"
+
+  - metric: dc_offset
+    operator: gt
+    value: 0.01
+    severity: warning
+    description: "DC offset detected — possible hardware or A/D converter issue"
+
+  - metric: dc_offset
+    operator: lt
+    value: -0.01
+    severity: warning
+    description: "Negative DC offset detected — possible hardware or A/D converter issue"
+
+  - metric: phase
+    operator: lt
+    value: -0.8
+    severity: warning
+    description: "Audio channels significantly out of phase — possible wiring or polarity issue"
+
+  - metric: momentary_loudness
+    operator: gt
+    value: -2.0
+    severity: warning
+    description: "Momentary loudness exceeding EBU recommended maximum"
+
+  - metric: max_diff
+    operator: gt
+    value: 0.5
+    severity: warning
+    description: "Large consecutive sample difference — possible interstitial error"
+
+  - metric: rms
+    operator: gt
+    value: -3.0
+    severity: warning
+    description: "RMS level very high — sustained loud content"
+
+  - metric: integrated_loudness
+    operator: gt
+    value: -16.0
+    severity: warning
+    description: "Integrated loudness exceeds EBU R128 target of -23 LUFS (broadcast) or -16 LUFS (streaming)"

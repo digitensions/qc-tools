@@ -1,0 +1,51 @@
+name: film
+media_type: film
+description: "QC thresholds for film scan digitization"
+rules:
+  - metric: tout
+    operator: gt
+    value: 0.005
+    severity: warning
+    description: "Temporal outliers — possible dust, scratches, or dirt on the film"
+
+  - metric: tout
+    operator: gt
+    value: 0.03
+    severity: error
+    description: "Significant temporal outliers — heavy dust, scratches, or film damage"
+
+  - metric: y_dif
+    operator: gt
+    value: 50
+    severity: warning
+    description: "Large luma difference between frames — possible flicker or exposure change"
+
+  - metric: y_dif
+    operator: gt
+    value: 100
+    severity: error
+    description: "Very large luma difference — possible scene change or severe flicker"
+
+  - metric: brng
+    operator: gt
+    value: 0.0
+    severity: info
+    description: "Broadcast range violations — film often exceeds broadcast range naturally"
+
+  - metric: satmax
+    operator: gt
+    value: 118.2
+    severity: info
+    description: "High saturation — film can have wide colour gamut"
+
+  - metric: crop_w
+    operator: gt
+    value: 0
+    severity: info
+    description: "Crop detected — possible gate area or black borders from scanning"
+
+  - metric: crop_h
+    operator: gt
+    value: 0
+    severity: info
+    description: "Crop detected — possible gate area or black borders from scanning"

@@ -1,0 +1,39 @@
+name: borndigital
+media_type: borndigital
+description: "QC thresholds for born-digital video files"
+rules:
+  - metric: tout
+    operator: gt
+    value: 0.001
+    severity: warning
+    description: "Temporal outliers in born-digital file — possible encoding artifact or source corruption"
+
+  - metric: tout
+    operator: gt
+    value: 0.01
+    severity: error
+    description: "Significant temporal outliers — likely file corruption or damaged source"
+
+  - metric: brng
+    operator: gt
+    value: 0.0
+    severity: info
+    description: "Broadcast range violations — may be intentional for born-digital content"
+
+  - metric: pkt_duration_time
+    operator: gt
+    value: 0.0
+    severity: error
+    description: "Variable frame duration detected — possible corruption or VFR encoding"
+
+  - metric: satmax
+    operator: gt
+    value: 118.2
+    severity: warning
+    description: "Illegal saturation — exceeds YUV colour space limits"
+
+  - metric: msef
+    operator: gt
+    value: 500
+    severity: warning
+    description: "Elevated MSE between fields — possible interlacing or compression artifact"

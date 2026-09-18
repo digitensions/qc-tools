@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Aikido data
+*aikido_rules.instructions.md
+
 # Distribution / packaging
 .Python
 build/

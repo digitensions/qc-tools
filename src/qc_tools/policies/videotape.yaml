@@ -1,0 +1,69 @@
+name: videotape
+media_type: videotape
+description: "QC thresholds for analog videotape digitization (VHS, U-Matic, Betacam, Hi8)"
+rules:
+  - metric: tout
+    operator: gt
+    value: 0.009
+    severity: warning
+    description: "Temporal outliers detected — possible tape crease, tracking issue, or dropout"
+
+  - metric: tout
+    operator: gt
+    value: 0.05
+    severity: error
+    description: "Significant temporal outliers — likely head clog or severe tape damage"
+
+  - metric: brng
+    operator: gt
+    value: 0.01
+    severity: warning
+    description: "Broadcast range violations — pixels outside 16-235 luma or 16-240 chroma"
+
+  - metric: vrep
+    operator: gt
+    value: 0.0
+    severity: warning
+    description: "Vertical line repetitions — possible TBC dropout compensation or deck issue"
+
+  - metric: satmax
+    operator: gt
+    value: 118.2
+    severity: error
+    description: "Illegal saturation — exceeds YUV colour space limits, likely tape damage"
+
+  - metric: satmax
+    operator: gt
+    value: 88.7
+    severity: warning
+    description: "Saturation above 75% broadcast-safe level"
+
+  - metric: msef
+    operator: gt
+    value: 1000
+    severity: warning
+    description: "High MSE between fields — possible interlacing artifact or head clog"
+
+  - metric: ssimf
+    operator: lt
+    value: 0.95
+    severity: warning
+    description: "Low SSIM between fields — fields differ significantly, possible playback error"
+
+  - metric: psnrf
+    operator: lt
+    value: 20
+    severity: warning
+    description: "Low PSNR between fields — fields differ significantly"
+
+  - metric: y_max
+    operator: gt
+    value: 235
+    severity: info
+    description: "Luma above reference white (100 IRE) — may indicate oversaturated highlights"
+
+  - metric: y_min
+    operator: lt
+    value: 16
+    severity: info
+    description: "Luma below reference black (7.5 IRE) — may indicate sync or black level issues"

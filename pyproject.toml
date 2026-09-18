@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qc-tools"
+version = "0.1.0"
+description = "Python wrapper for MediaArea QCTools — quality control for video and audio preservation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "QC Tools Contributors"},
+]
+keywords = ["qctools", "video", "preservation", "archive", "qc", "quality-control", "mediaarea", "ffprobe"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "PyYAML>=6.0",
+    "Jinja2>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/qc-tools"
+Documentation = "https://github.com/your-org/qc-tools#readme"
+Repository = "https://github.com/your-org/qc-tools"
+"Issue Tracker" = "https://github.com/your-org/qc-tools/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/qc_tools/engine.py" = ["E501"]
+"src/qc_tools/html_report.py" = ["E501"]
+"src/qc_tools/parser.py" = ["E501"]
+"src/qc_tools/utils.py" = ["E501"]
+"src/qc_tools/qctools.py" = ["E501"]
+"tests/*.py" = ["E501"]
