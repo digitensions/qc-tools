@@ -178,9 +178,6 @@ def analyze(
     else:
         raise ValueError(f"Unknown engine: {engine}. Use 'auto', 'qcli', or 'ffprobe'.")
 
-    if not save_xml:
-        from .parser import parse_qctools_xml
-
     report = parse_qctools_xml(xml_path, source_path=input_path, policy=policy)
 
     return report
