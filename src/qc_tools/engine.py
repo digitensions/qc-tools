@@ -183,9 +183,6 @@ def analyze(
 
     report = parse_qctools_xml(xml_path, source_path=input_path, policy=policy)
 
-    if not save_xml:
-        xml_path.unlink(missing_ok=True)
-
     return report
 
 
