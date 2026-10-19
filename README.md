@@ -14,7 +14,7 @@ Python wrapper for [MediaArea QCTools](https://mediaarea.net/QCTools) — qualit
 - **Broadcast compliance** — strict luma/chroma range checking
 - **Audio preservation** — EBU R128 loudness, clipping, phase analysis
 
-## Installation
+## Installation (forthcoming - not yet available)
 
 ```bash
 pip install qc-tools
